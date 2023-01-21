@@ -6,12 +6,11 @@ Get GeoIP2 Databases without account!
 
 ## List
 
-| Database | MMDB | CSV |
-|---|---|---|
-| Country | [GeoLite2-Country.mmdb](https://github.com/green1052/maxmind-geoip2/raw/master/dist/GeoLite2-Country/GeoLite2-Country.mmdb) | [GeoLite2-Country-CSV](https://github.com/green1052/maxmind-geoip2/tree/master/dist/GeoLite2-Country-CSV) |
-| City | [GeoLite2-City.mmdb](https://github.com/green1052/maxmind-geoip2/raw/master/dist/GeoLite2-City/GeoLite2-City.mmdb) | [GeoLite2-City-CSV](https://github.com/green1052/maxmind-geoip2/tree/master/dist/GeoLite2-City-CSV) |
-| ASN | [GeoLite2-ASN.mmdb](https://github.com/green1052/maxmind-geoip2/raw/master/dist/GeoLite2-ASN/GeoLite2-ASN.mmdb) | [GeoLite2-ASN-CSV](https://github.com/green1052/maxmind-geoip2/tree/master/dist/GeoLite2-ASN-CSV) |
-
+| Database | MMDB | CSV |  |  |
+|---|---|---|---|---|
+| Country | [GeoLite2-Country.mmdb](https://github.com/green1052/maxmind-geoip2/raw/master/dist/GeoLite2-Country/GeoLite2-Country.mmdb) | undefined |  |  |
+| City | [GeoLite2-City.mmdb](https://github.com/green1052/maxmind-geoip2/raw/master/dist/GeoLite2-City/GeoLite2-City.mmdb) | undefined |  |  |
+| ASN | [GeoLite2-ASN.mmdb](https://github.com/green1052/maxmind-geoip2/raw/master/dist/GeoLite2-ASN/GeoLite2-ASN.mmdb) | undefined |  |  |
 ## Update Cycle
 
 [Check here](https://support.maxmind.com/hc/en-us/articles/4408216129947)
