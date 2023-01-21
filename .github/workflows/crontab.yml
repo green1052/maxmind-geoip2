@@ -48,6 +48,6 @@ jobs:
           # unzip -j "GeoLite2-Country-CSV.zip" -d "${SAVE_DIR}/GeoLite2-Country-CSV"
 
       - name: Push
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: EndBug/add-and-commit@v9
         with:
-          file_pattern: "dist/* .gitattributes"
+          add: "dist"
