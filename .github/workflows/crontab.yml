@@ -51,9 +51,9 @@ jobs:
 
       - name: lfs
         run: |
-          git lfs track "dist/*/.csv"
+          git lfs track "dist/*/*.csv"
 
       - name: Push
-        uses: stefanzweifel/git-auto-commit-action@v4
+        uses: EndBug/add-and-commit@v9
         with:
-          file_pattern: "dist/* .gitattributes"
+          add: "dist .gitattributes"
