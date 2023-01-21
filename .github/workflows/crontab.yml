@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          lfs: true
 
       - name: Clean up
         run: |
@@ -48,11 +46,6 @@ jobs:
           
           tar -zxvf "GeoLite2-Country.tar.gz" -C "${SAVE_DIR}/GeoLite2-Country" --strip-components 1
           # unzip -j "GeoLite2-Country-CSV.zip" -d "${SAVE_DIR}/GeoLite2-Country-CSV"
-
-      - name: lfs
-        run: |
-          git lfs track "dist/*/*.mmdb"
-          # git lfs track "dist/*/.csv"
 
       - name: Push
         uses: stefanzweifel/git-auto-commit-action@v4
