@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          lfs: true
 
       - name: Clean up
         run: |
@@ -28,32 +26,20 @@ jobs:
           LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
         run: |
           wget -O "GeoLite2-ASN.tar.gz" "${BASE_URL}?edition_id=GeoLite2-ASN&license_key=${LICENSE_KEY}&suffix=tar.gz"
-          wget -O "GeoLite2-ASN-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-ASN-CSV&license_key=${LICENSE_KEY}&suffix=zip"
-          
           wget -O "GeoLite2-City.tar.gz" "${BASE_URL}?edition_id=GeoLite2-City&license_key=${LICENSE_KEY}&suffix=tar.gz"
-          wget -O "GeoLite2-City-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-City-CSV&license_key=${LICENSE_KEY}&suffix=zip"
-          
           wget -O "GeoLite2-Country.tar.gz" "${BASE_URL}?edition_id=GeoLite2-Country&license_key=${LICENSE_KEY}&suffix=tar.gz"
-          wget -O "GeoLite2-Country-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip"
 
       - name: Decompress
         env:
           SAVE_DIR: "./dist"
         run: |
-          tar -zxvf "GeoLite2-ASN.tar.gz" -C "${SAVE_DIR}/GeoLite2-ASN" --strip-components 1
-          unzip -j "GeoLite2-ASN-CSV.zip" -d "${SAVE_DIR}/GeoLite2-ASN-CSV"
+          tar -zxvf "GeoLite2-ASN.tar.gz" -C "${SAVE_DIR}/GeoLite2-ASN" --strip-compon
 
           tar -zxvf "GeoLite2-City.tar.gz" -C "${SAVE_DIR}/GeoLite2-City" --strip-components 1
-          unzip -j "GeoLite2-City-CSV.zip" -d "${SAVE_DIR}/GeoLite2-City-CSV"
-          
+ 
           tar -zxvf "GeoLite2-Country.tar.gz" -C "${SAVE_DIR}/GeoLite2-Country" --strip-components 1
-          unzip -j "GeoLite2-Country-CSV.zip" -d "${SAVE_DIR}/GeoLite2-Country-CSV"
-
-      - name: lfs
-        run: |
-          git lfs track "dist/*/*.csv"
 
       - name: Push
         uses: EndBug/add-and-commit@v9
         with:
-          add: "dist .gitattributes"
+          add: "dist"
