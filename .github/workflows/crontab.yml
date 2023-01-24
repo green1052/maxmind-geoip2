@@ -33,7 +33,7 @@ jobs:
         env:
           SAVE_DIR: "./dist"
         run: |
-          tar -zxvf "GeoLite2-ASN.tar.gz" -C "${SAVE_DIR}/GeoLite2-ASN" --strip-compon
+          tar -zxvf "GeoLite2-ASN.tar.gz" -C "${SAVE_DIR}/GeoLite2-ASN" --strip-components 1
 
           tar -zxvf "GeoLite2-City.tar.gz" -C "${SAVE_DIR}/GeoLite2-City" --strip-components 1
  
