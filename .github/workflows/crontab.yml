@@ -1,14 +1,9 @@
 name: "Update MaxMind GeoLite2 database"
 
 on:
-  workflow_dispatch:
-    inputs:
-      nothing:
-        description: "This workflow does not accept any input"
-        required: false
   schedule:
     - cron: "0 0 * * 2,5"
-
+  workflow_dispatch:
 jobs:
   build:
     permissions: write-all
