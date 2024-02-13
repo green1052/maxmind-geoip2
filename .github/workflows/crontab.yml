@@ -21,8 +21,13 @@ jobs:
           LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
         run: |
           wget -O "GeoLite2-ASN.tar.gz" "${BASE_URL}?edition_id=GeoLite2-ASN&license_key=${LICENSE_KEY}&suffix=tar.gz"
+          wget -O "GeoLite2-ASN-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-ASN-CSV&license_key=${LICENSE_KEY}&suffix=zip"
+          
           wget -O "GeoLite2-City.tar.gz" "${BASE_URL}?edition_id=GeoLite2-City&license_key=${LICENSE_KEY}&suffix=tar.gz"
+          wget -O "GeoLite2-City-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-City-CSV&license_key=${LICENSE_KEY}&suffix=zip"
+          
           wget -O "GeoLite2-Country.tar.gz" "${BASE_URL}?edition_id=GeoLite2-Country&license_key=${LICENSE_KEY}&suffix=tar.gz"
+          wget -O "GeoLite2-Country-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip"
 
       - name: Decompress
         env:
@@ -36,3 +41,20 @@ jobs:
         uses: EndBug/add-and-commit@v9
         with:
           add: "dist"
+
+      - name: Download CSV
+        env:
+          BASE_URL: "https://download.maxmind.com/app/geoip_download"
+          LICENSE_KEY: ${{ secrets.LICENSE_KEY }}
+        run: |
+          wget -O "GeoLite2-ASN-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-ASN-CSV&license_key=${LICENSE_KEY}&suffix=zip"
+          wget -O "GeoLite2-City-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-City-CSV&license_key=${LICENSE_KEY}&suffix=zip"
+          wget -O "GeoLite2-Country-CSV.zip" "${BASE_URL}?edition_id=GeoLite2-Country-CSV&license_key=${LICENSE_KEY}&suffix=zip"
+
+          unzip "*.zip" && mv */*.csv csv
+
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}      
+          workingDirectory: "csv"
