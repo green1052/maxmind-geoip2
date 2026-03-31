@@ -33,6 +33,6 @@ jobs:
           tar -zxvf "GeoLite2-Country.tar.gz" -C "${SAVE_DIR}/GeoLite2-Country" --strip-components 1
 
       - name: Push
-        uses: EndBug/add-and-commit@v9
+        uses: EndBug/add-and-commit@v10
         with:
           add: "dist"
